@@ -35,8 +35,6 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
       firstDayFound = data.getDate() + weekday - firstWeekDayOfMonth;
       
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
-     
-
       data.setDate(firstDayFound);
       
       addTolist(data, i, results)
@@ -91,7 +89,6 @@ button.onclick = function() {
   }
 };
 
-
 window.onload = function() {
   var today = new Date();
 
@@ -115,11 +112,8 @@ window.onload = function() {
           headerTime.appendChild(nearestTimeText);
           
           var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
-          console.log(plus.length);
           
-          var final = nearest.concat(plus);
-          console.log(final.length);
-          
+          var final = nearest.concat(plus);          
           
           for (var i = 0; i < final.length; i++) {
               var face = document.createElement("div");
