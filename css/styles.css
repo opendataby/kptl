@@ -1,15 +1,15 @@
 main h1 {
     margin-bottom: 5px;
 }
-header {
+header, footer {
     background-color: #2a2f4e;
 }
-main, footer {
+main {
     margin: 0 10em 0 60px;
 }
 body {
     margin: 0;
-
+	font-family: sans-serif;
 }
 #caption {
     margin: 0 auto;
@@ -32,4 +32,15 @@ body {
 }
 #nearest {
     color: #F46569
+}
+footer p {
+    color: white;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 0;
+    margin-left: 60px;
+    font-size: .8em;
+}
+footer a {
+    color: white;
 }

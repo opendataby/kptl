@@ -118,7 +118,7 @@ window.onload = function() {
           for (var i = 0; i < final.length; i++) {
               var face = document.createElement("div");
               var image = document.createElement("img");
-              image.setAttribute("src", "img/" + final[i].photo);
+              image.setAttribute("src", (final[i].photo != null) ? "img/" + final[i].photo : "img/noimage.png");
               image.setAttribute("title", final[i].fio + " - " + final[i].data);
               
               var organHeader = document.createElement("h3");
