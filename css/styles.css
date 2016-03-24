@@ -4,6 +4,15 @@ main h1 {
 header, footer {
     background-color: #2a2f4e;
 }
+
+header p {
+    float: right;
+    padding-right: 10em;
+}
+header a {
+	text-decoration: none;
+	color: white;
+}
 main {
     margin: 0 10em 0 60px;
 }
@@ -39,8 +48,10 @@ footer p {
     padding-bottom: .5em;
     margin-bottom: 0;
     margin-left: 60px;
-    font-size: .8em;
 }
 footer a {
     color: white;
+}
+#impressum {
+    clear: both;
 }

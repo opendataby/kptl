@@ -3,91 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="description" content="Календарь прямых телефонных линий с руководителями органов власти Республики Беларусь.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Прямые телефонные линии с руководством органов власти</title>
 <link rel="stylesheet" href="css/styles.css">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter36243025 = new Ya.Metrika({
+                    id:36243025,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/36243025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <header>
-    <img src="img/logo.jpg">
+    <img src="img/logo.jpg"> <p><a href="calculator.html">Калькулятор дат</a></p>
 </header>
 <main>
     <h1>Календарь прямых телефонных линий</h1>
     <p id="caption">С руководством государственных органов Беларуси</p>
-    
     <h2>Ближайшие прямые телефонные линии - <span id="nearest"></span>:</h2>
     <section id="gallery">
     </section>
-    <section id="temp">
-	<hr>
-    <h2>Калькулятор дат прямых телефонных линий</h2>
-    <p>В ходе работы над темой обнаружилось, что белорусские государственные органы публикуют даты проведения прямых линий в разных форматах. Известны, как минимум, 5 таких форматов, вот примеры:
-    <ol>
-        <li>16 января</li>
-        <li>02.01.2016</li>
-        <li>05.03.16</li>
-        <li>Ежемесячно первая суббота</li>
-        <li>Первая среда первого месяца каждого квартала</li>        
-    </ol>
-    </p>
-    <p>Такое разнообразие написаний дат неоправданно усложняет работу с ними, поэтому на будущее необходимо утверждать единый машиночитаемый формат распространения календаря прямых линий.</p>
-    <p>В качестве временной меры был сделан калькулятор, который рассчитывает даты по заданным параметрам - например, "Первая суббота второго месяца каждого квартала" - и возвращает дату в формате "гггг-мм-дд":</p>
-    <section>
-        <p>
-        </p><p>
-        <label for="everyWeekDay">Каждое</label>
-        <select id="everyWeekDay">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>           
-        </select>
-        <label for="weekDay"></label>
-        <select id="weekDay">
-            <option value="0">Воскресенье</option>
-            <option value="1">Понедельник</option>
-            <option value="2">Вторник</option>
-            <option value="3">Среда</option>
-            <option value="4">Четверг</option>
-            <option value="5">Пятница</option>
-            <option value="6">Суббота</option>            
-        </select>
-        <label for="everyQuarterMonth">месяц квартала (если нужно):</label>
-        <select id="everyQuarterMonth">
-            <option value=""></option>  
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>         
-        </select>
-        <select id="year">
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>            
-        </select>
-        <label for="year">года.</label>
-        <button type="button" id="calc">Рассчитать</button>
-        </p>
-    </section>
-    <section id="output">        
-    </section>
-    </section>
-    <hr>
     <ul>
-    
+	<section id="impressum">
     <li>Другие проекты сообщества "Открытые данные для Беларуси": <a href="http://opendata.by/projects/">opendata.by/projects</a></li>
         <li>Контакты сообщества для желающих присоединиться: <a href="http://opendata.by/about/">opendata.by/about</a></li>
 	</ul>
         <p class="text">Редактор приложения Алексей Медвецкий, am@opendata.by.</p>
+	</section>
 </main>
 <footer>
 	<p>Проект сообщества "<a href="http://opendata.by">Открытые данные для Беларуси</a>".</p>
     <script src="js/script.js"></script>
-</footer>
-
 </footer>
 </body>
 </html>
