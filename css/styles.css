@@ -4,21 +4,23 @@ main h1 {
 header, footer {
     background-color: #2a2f4e;
 }
-
+hr, #nearestHeader{
+    clear: both;
+}
 header p {
     float: right;
     padding-right: 10em;
 }
 header a {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 main {
     margin: 0 10em 0 60px;
 }
 body {
     margin: 0;
-	font-family: sans-serif;
+    font-family: sans-serif;
 }
 #caption {
     margin: 0 auto;
@@ -31,27 +33,35 @@ body {
     height: 200px;
     padding: .1em;
 }
-#temp {
-    clear: both;
-}
 #gallery div {
     float: left;
     width: 25%;
     text-align: center;
 }
 #nearest {
-    color: #F46569
+    clear: both;
+    margin-top: 2em;
 }
-footer p {
-    color: white;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    margin-bottom: 0;
-    margin-left: 60px;
+#nearest div {
+    float: left;
+    width: 50%;
+    height: 250px;
 }
-footer a {
-    color: white;
+#nearest img {
+    height: 150px;
+    float: left;
+    padding-right: 2em;
+}
+#temp {
+    clear: both;
+}
+footer {
+    height: .5em;
 }
 #impressum {
     clear: both;
+    padding-top: 1em;
+}
+#output {
+    margin-bottom: 3em;
 }

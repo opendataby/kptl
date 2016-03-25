@@ -1,63 +1,66 @@
-<!-- Проверка новой ветки. -->
+<!-- Проверка новой ветки alter. -->
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="description" content="Календарь прямых телефонных линий с руководителями органов власти Республики Беларусь.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Прямые телефонные линии с руководством органов власти</title>
-<link rel="stylesheet" href="css/styles.css">
+    <meta charset="utf-8">
+    <meta name="description" content="Календарь прямых телефонных линий с руководителями органов власти Республики Беларусь.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Прямые телефонные линии с руководством органов власти</title>
+    <link rel="stylesheet" href="css/styles.css">
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter36243025 = new Ya.Metrika({
-                    id:36243025,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true
-                });
-            } catch(e) { }
-        });
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter36243025 = new Ya.Metrika({
+                        id:36243025,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true
+                    });
+                } catch(e) { }
+            });
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/36243025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/36243025" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-<header>
-    <img src="img/logo.jpg"> <p><a href="calculator.html">Калькулятор дат</a></p>
-</header>
-<main>
-    <h1>Календарь прямых телефонных линий</h1>
-    <p id="caption">С руководством государственных органов Беларуси</p>
-    <h2>Ближайшие прямые телефонные линии - <span id="nearest"></span>:</h2>
-    <section id="gallery">
-    </section>
-    <ul>
-	<section id="impressum">
-    <li>Другие проекты сообщества "Открытые данные для Беларуси": <a href="http://opendata.by/projects/">opendata.by/projects</a></li>
-        <li>Контакты сообщества для желающих присоединиться: <a href="http://opendata.by/about/">opendata.by/about</a></li>
-	</ul>
-        <p class="text">Редактор приложения Алексей Медвецкий, am@opendata.by.</p>
-	</section>
-</main>
-<footer>
-	<p>Проект сообщества "<a href="http://opendata.by">Открытые данные для Беларуси</a>".</p>
-    <script src="js/script.js"></script>
-</footer>
+    <header>
+        <img src="img/logo.jpg"> <p><a href="calculator.html">Калькулятор дат</a></p>
+    </header>
+    <main>
+        <h1>Календарь прямых телефонных линий</h1>
+        <p id="caption">С руководством государственных органов Беларуси</p>
+        <div id="mainHeader"></div>
+        <section id="gallery"></section>
+        <hr>
+        <div id="nearestHeader"></div>
+        <section id="nearest"></section>
+        <hr>
+        <section id="impressum">
+            <p>Проект сообщества "<a href="http://opendata.by">Открытые данные для Беларуси</a>".</p>
+            <ul>
+                <li>Другие проекты сообщества: <a href="http://opendata.by/projects/">opendata.by/projects</a></li>
+                <li>Контакты сообщества для желающих присоединиться: <a href="http://opendata.by/about/">opendata.by/about</a></li>
+            </ul>
+            <p>Редактор приложения Алексей Медвецкий, am@opendata.by.</p>
+        </section>
+    </main>
+    <footer>
+        <script src="js/script.js"></script>
+    </footer>
 </body>
 </html>
 

@@ -1,14 +1,7 @@
 var jsonData;
 
-function formatDate(number) {
-  return (number < 10) ? "0" + number : number;
-}
-
 function addTolist(data, i, results) {
-        var year = data.getFullYear();
-        var month = i;
-        var day = data.getDate();
-        results.push(year + "-" + (formatDate(month + 1)) + "-" + formatDate(day));
+        results.push(data.toJSON().slice(0,10));
         return results;
 }
 
@@ -43,7 +36,6 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
       firstDayFound = firstDayFound + (7 * (everyWeekDay - 1));
       data.setDate(firstDayFound)
       addTolist(data, i, results); 
-      
     }
     }
 }
@@ -88,5 +80,3 @@ button.onclick = function() {
     
   }
 };
-
-

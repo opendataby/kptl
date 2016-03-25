@@ -1,73 +1,110 @@
 var today = new Date();
+var todayString = today.toJSON().slice(0,10);
+today = new Date(todayString);
 var request;
 
-if (window.XMLHttpRequest) {
-				request = new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				request = new ActiveXObject("Microsoft XMLHTTP");
-			};
+var todayGallery = document.getElementById("gallery");
+var nearestGallery = document.getElementById("nearest");
 
-var gallery = document.getElementById("gallery");
+var mainHeader = document.getElementById("mainHeader");
+var nearestHeader = document.getElementById("nearestHeader");
+
+function showCards(arrayName, target) {
+
+    for (var i = 0; i < arrayName.length; i++) {
+
+        var card = document.createElement("div");
+
+        var organHeader = document.createElement("h3");
+        var organText = document.createTextNode(arrayName[i].organ);
+        organHeader.appendChild(organText);
+
+        var image = document.createElement("img");
+        image.setAttribute("src", (arrayName[i].photo != null) ? "img/" + arrayName[i].photo : "img/noimage.png");
+        image.setAttribute("title", arrayName[i].fio + " - " + arrayName[i].data);
+
+        var positionPar = document.createElement("p");
+        var positionText = document.createTextNode(arrayName[i].dolzhnost);
+        positionPar.appendChild(positionText);
+
+        var fioPar = document.createElement("p");
+        var fioText = document.createTextNode(arrayName[i].fio);
+        fioPar.appendChild(fioText);
+
+        var timePar = document.createElement("p");
+        var timeText = document.createTextNode(arrayName[i].vremia);
+        timePar.appendChild(timeText);
+
+        var telPar = document.createElement("p");
+        var telText = document.createTextNode(arrayName[i].tel);
+        telPar.appendChild(telText);
+
+        card.appendChild(organHeader);              
+        card.appendChild(image);
+        card.appendChild(fioPar);
+        card.appendChild(positionPar);
+        card.appendChild(timePar);
+        card.appendChild(telPar);
+
+        target.appendChild(card);
+    }
+}
+
+if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                request = new ActiveXObject("Microsoft XMLHTTP");
+            };
 
 request.onreadystatechange = function() {
-      if (request.readyState === 4) {
-          jsonData = JSON.parse(request.responseText);
-          jsonData.sort(function(a, b) { 
+    if (request.readyState === 4) {
+        jsonData = JSON.parse(request.responseText);
+        jsonData.sort(function(a, b) { 
             return new Date(a.data) - new Date(b.data);
           });
-console.log(today);
-          var aktualno = jsonData.filter(function(b) { return new Date(b.data) >= today; });
-			console.log(aktualno);
-          var nearest = [];
-          var firstItem = aktualno.shift();
-          nearest.push(firstItem);
-          
+          var aktualno = jsonData.filter(function(b) { return new Date(b.data).getTime() >= today.getTime(); });
 
-
-          var headerTime = document.getElementById("nearest");
-          var nearestTimeText = document.createTextNode(firstItem.data);
-          headerTime.appendChild(nearestTimeText);
+        var firstItem = aktualno.shift();
           
           var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
-          
-          var final = nearest.concat(plus);          
-          
-          for (var i = 0; i < final.length; i++) {
-              var face = document.createElement("div");
-              var image = document.createElement("img");
-              image.setAttribute("src", (final[i].photo != null) ? "img/" + final[i].photo : "img/noimage.png");
-              image.setAttribute("title", final[i].fio + " - " + final[i].data);
-              
-              var organHeader = document.createElement("h3");
-              var organText = document.createTextNode(final[i].organ);
-              organHeader.appendChild(organText);
-              
-              var positionPar = document.createElement("p");
-              var positionText = document.createTextNode(final[i].dolzhnost);
-              positionPar.appendChild(positionText);
-              
-              var fioPar = document.createElement("p");
-              var fioText = document.createTextNode(final[i].fio);
-              fioPar.appendChild(fioText);
-              
-              var timePar = document.createElement("p");
-              var timeText = document.createTextNode(final[i].vremia);
-              timePar.appendChild(timeText);
+             plus.push(firstItem);
 
-              var telPar = document.createElement("p");
-              var telText = document.createTextNode(final[i].tel);
-              telPar.appendChild(telText);
-              
-              face.appendChild(organHeader);
-              
-              face.appendChild(image);
-              face.appendChild(fioPar);
+        if (new Date(firstItem.data).getTime() == today.getTime()) {
 
-              face.appendChild(positionPar);
-              face.appendChild(timePar);
-              face.appendChild(telPar);
-              gallery.appendChild(face);
-          }
+            var todayHeading = document.createElement("h2");
+            var todayText = "Сегодня, " + todayString + ", прямые линии проводят:"
+            var todayHeadingText = document.createTextNode(todayText);
+            todayHeading.appendChild(todayHeadingText);
+            mainHeader.appendChild(todayHeading);
+            
+            var nearest = aktualno.filter(function(d) { return new Date(d.data).getTime() > today.getTime(); });
+            var firstNearestItem = nearest.shift();
+            var nearestArray = nearest.filter(function(d) { return d.data == firstNearestItem.data; });
+            nearestArray.push(firstNearestItem);
+            
+            var firstNearestDateString = new Date(firstNearestItem.data).toJSON().slice(0,10);
+            
+            var nearestText = "Ближайшие прямые линии пройдут " + firstNearestDateString + ":";
+            var nearestHeading = document.createElement("h2");
+            var nearestHeadingText = document.createTextNode(nearestText);
+            nearestHeading.appendChild(nearestHeadingText);
+            nearestHeader.appendChild(nearestHeading);
+            
+            showCards(plus, todayGallery);
+            showCards(nearestArray, nearestGallery);
+
+        } else {
+            var nearest = aktualno.filter(function(d) { return new Date(d.data).getTime() > today.getTime(); });
+            var firstNearestItem = nearest.shift();
+            var nearestArray = nearest.filter(function(d) { return d.data == firstNearestItem.data; });
+            nearestArray.push(firstNearestItem);
+            
+            var header = document.createElement("h2");
+            var headerText = document.createTextNode("Ближайшие прямые линии пройдут:");
+          
+            
+            showCards(nearestArray, nearestGallery);
+        }
         };
       };
     request.open("GET", "data/data.json", true);
