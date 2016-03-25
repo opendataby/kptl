@@ -52,8 +52,8 @@ function showCards(arrayName, target) {
 
 if (window.XMLHttpRequest) {
                 request = new XMLHttpRequest();
-            } else if (window.ActiveXObject) {
-                request = new ActiveXObject("Microsoft XMLHTTP");
+            } else {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
             };
 
 request.onreadystatechange = function() {
