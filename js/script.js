@@ -67,8 +67,7 @@ request.onreadystatechange = function() {
         var firstItem = aktualno[0];
           
           var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
-             plus.push(firstItem);
-
+             
         if (new Date(firstItem.data).getTime() == today.getTime()) {
 
             var todayHeading = document.createElement("h2");
