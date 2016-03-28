@@ -64,7 +64,7 @@ request.onreadystatechange = function() {
           });
           var aktualno = jsonData.filter(function(b) { return new Date(b.data).getTime() >= today.getTime(); });
 
-        var firstItem = aktualno.shift();
+        var firstItem = aktualno[0];
           
           var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
              plus.push(firstItem);
@@ -94,14 +94,16 @@ request.onreadystatechange = function() {
             showCards(nearestArray, nearestGallery);
 
         } else {
-            var nearest = aktualno.filter(function(d) { return new Date(d.data).getTime() > today.getTime(); });
-            var firstNearestItem = nearest.shift();
-            var nearestArray = nearest.filter(function(d) { return d.data == firstNearestItem.data; });
-            nearestArray.push(firstNearestItem);
-            
-            var header = document.createElement("h2");
-            var headerText = document.createTextNode("Ближайшие прямые линии пройдут:");
-          
+
+            var nearestArray = aktualno.filter(function(d) { return d.data === aktualno[0].data; });
+			
+            var firstNearestDateString = new Date(aktualno[0].data).toJSON().slice(0,10);
+
+            var nearestText = "Ближайшие прямые линии пройдут " + firstNearestDateString + ":";
+            var nearestHeading = document.createElement("h2");
+            var nearestHeadingText = document.createTextNode(nearestText);
+            nearestHeading.appendChild(nearestHeadingText);
+            nearestHeader.appendChild(nearestHeading);
             
             showCards(nearestArray, nearestGallery);
         }
