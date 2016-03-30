@@ -108,5 +108,5 @@ request.onreadystatechange = function() {
         }
         };
       };
-    request.open("GET", "data/data.json", true);
+    request.open("GET", "data/data_2q.json", true);
     request.send(null);
