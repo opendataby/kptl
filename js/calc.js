@@ -36,19 +36,28 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
       
       data.setDate(firstDayFound);
-      addTolist(data, i, results);
-
+      if (data.getMonth() > i) {
+		continue;
+	} else {
+		addTolist(data, i, results);
+}
       
     } else if (weekday > firstWeekDayOfMonth) {
       firstDayFound = data.getDate() + weekday - firstWeekDayOfMonth;
+      console.log(firstDayFound);
       
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
       
       console.log(firstDayFound);
-      
-      data.setDate(firstDayFound);
-      addTolist(data, i, results);
 
+
+
+      data.setDate(firstDayFound);
+      if (data.getMonth() > i) {
+		continue;
+	} else {
+		addTolist(data, i, results);
+}
       
     } else if (firstWeekDayOfMonth == weekday && everyWeekDay > 1) {
       firstDayFound = data.getDate();
