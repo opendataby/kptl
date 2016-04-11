@@ -1,18 +1,32 @@
 var jsonData;
 
+//function addTolist(data, i, results) {
+        //results.push(data.toJSON().slice(0,10));
+        //return results;
+//}
+
+function formatDate(number) {
+  return (number < 10) ? "0" + number : number;
+}
+
 function addTolist(data, i, results) {
-        results.push(data.toJSON().slice(0,10));
+        var year = data.getFullYear();
+        var month = i;
+        var day = data.getDate();
+        results.push(year + "-" + (formatDate(month + 1)) + "-" + formatDate(day));
         return results;
 }
 
 function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
   for (var i = startMonth; i < 12; i += step) {
    var data = new Date(year, i, 1);
+   
 
     var firstWeekDayOfMonth = data.getDay();
        
     if (firstWeekDayOfMonth == weekday && everyWeekDay == 1) {
       addTolist(data, i, results);
+
       
     } else if (weekday < firstWeekDayOfMonth) {
       var range = firstWeekDayOfMonth - weekday;
@@ -22,22 +36,29 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
       
       data.setDate(firstDayFound);
-      addTolist(data, i, results)
+      addTolist(data, i, results);
+
       
     } else if (weekday > firstWeekDayOfMonth) {
       firstDayFound = data.getDate() + weekday - firstWeekDayOfMonth;
       
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
-      data.setDate(firstDayFound);
       
-      addTolist(data, i, results)
+      console.log(firstDayFound);
+      
+      data.setDate(firstDayFound);
+      addTolist(data, i, results);
+
+      
     } else if (firstWeekDayOfMonth == weekday && everyWeekDay > 1) {
       firstDayFound = data.getDate();
       firstDayFound = firstDayFound + (7 * (everyWeekDay - 1));
       data.setDate(firstDayFound)
-      addTolist(data, i, results); 
+      addTolist(data, i, results);
+
     }
     }
+    return results;
 }
 
 function findDates(year, weekday, everyWeekDay, everyQuarterMonth) {
@@ -63,6 +84,8 @@ button.onclick = function() {
   var weekDay = document.getElementById("weekDay").value;
   var everyWeekDay = document.getElementById("everyWeekDay").value;
   var everyQuarterMonth = document.getElementById("everyQuarterMonth").value;
+  
+  console.log(year, weekDay, everyWeekDay, everyQuarterMonth);
   
   var quarter = (everyQuarterMonth == "") ? undefined : parseInt(everyQuarterMonth);
   
