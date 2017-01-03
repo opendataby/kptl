@@ -1,10 +1,5 @@
 var jsonData;
 
-//function addTolist(data, i, results) {
-        //results.push(data.toJSON().slice(0,10));
-        //return results;
-//}
-
 function formatDate(number) {
   return (number < 10) ? "0" + number : number;
 }
@@ -26,45 +21,30 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
        
     if (firstWeekDayOfMonth == weekday && everyWeekDay == 1) {
       addTolist(data, i, results);
-
-      
     } else if (weekday < firstWeekDayOfMonth) {
       var range = firstWeekDayOfMonth - weekday;
-      
       var firstDayFound = (data.getDate() + 7) - range;
-      
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
-      
       data.setDate(firstDayFound);
       if (data.getMonth() > i) {
 		continue;
 	} else {
 		addTolist(data, i, results);
 }
-      
     } else if (weekday > firstWeekDayOfMonth) {
       firstDayFound = data.getDate() + weekday - firstWeekDayOfMonth;
-      console.log(firstDayFound);
-      
       firstDayFound = (everyWeekDay != 1) ? firstDayFound + (7 * (everyWeekDay - 1)) : firstDayFound;
-      
-      console.log(firstDayFound);
-
-
-
       data.setDate(firstDayFound);
       if (data.getMonth() > i) {
 		continue;
 	} else {
 		addTolist(data, i, results);
 }
-      
     } else if (firstWeekDayOfMonth == weekday && everyWeekDay > 1) {
       firstDayFound = data.getDate();
       firstDayFound = firstDayFound + (7 * (everyWeekDay - 1));
       data.setDate(firstDayFound)
       addTolist(data, i, results);
-
     }
     }
     return results;
@@ -72,7 +52,6 @@ function pushDates(startMonth, step, year, weekday, everyWeekDay, results) {
 
 function findDates(year, weekday, everyWeekDay, everyQuarterMonth) {
   var results = [];
-  
   if (everyQuarterMonth == undefined) {
     var startMonth = 0;
     var step = 1;
@@ -92,23 +71,16 @@ button.onclick = function() {
   var year = document.getElementById("year").value;
   var weekDay = document.getElementById("weekDay").value;
   var everyWeekDay = document.getElementById("everyWeekDay").value;
-  var everyQuarterMonth = document.getElementById("everyQuarterMonth").value;
-  
-  console.log(year, weekDay, everyWeekDay, everyQuarterMonth);
-  
+  var everyQuarterMonth = document.getElementById("everyQuarterMonth").value;  
   var quarter = (everyQuarterMonth == "") ? undefined : parseInt(everyQuarterMonth);
-  
   var dates = findDates(parseInt(year), parseInt(weekDay), parseInt(everyWeekDay), quarter);
-  
   var target = document.getElementById("output");
   var list = document.createElement("ul");
   target.appendChild(list);
-  
   for (var i = 0; i < dates.length; i++) {
     var listItem = document.createElement("li");
     var itemText = document.createTextNode(dates[i]);
     listItem.appendChild(itemText);
-    list.appendChild(listItem);
-    
+    list.appendChild(listItem); 
   }
 };

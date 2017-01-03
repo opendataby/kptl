@@ -2,10 +2,8 @@ var today = new Date();
 var todayString = today.toJSON().slice(0,10);
 today = new Date(todayString);
 var request;
-
 var todayGallery = document.getElementById("gallery");
 var nearestGallery = document.getElementById("nearest");
-
 var mainHeader = document.getElementById("mainHeader");
 var nearestHeader = document.getElementById("nearestHeader");
 
@@ -51,10 +49,10 @@ function showCards(arrayName, target) {
 }
 
 if (window.XMLHttpRequest) {
-                request = new XMLHttpRequest();
-            } else {
-                request = new ActiveXObject("Microsoft.XMLHTTP");
-            };
+	request = new XMLHttpRequest();
+} else {
+	request = new ActiveXObject("Microsoft.XMLHTTP");
+};
 
 request.onreadystatechange = function() {
     if (request.readyState === 4) {
@@ -62,11 +60,11 @@ request.onreadystatechange = function() {
         jsonData.sort(function(a, b) { 
             return new Date(a.data) - new Date(b.data);
           });
-          var aktualno = jsonData.filter(function(b) { return new Date(b.data).getTime() >= today.getTime(); });
+        var aktualno = jsonData.filter(function(b) { return new Date(b.data).getTime() >= today.getTime(); });
 
         var firstItem = aktualno[0];
           
-          var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
+        var plus = aktualno.filter(function(d) { return d.data == firstItem.data; });
              
         if (new Date(firstItem.data).getTime() == today.getTime()) {
 
@@ -95,9 +93,7 @@ request.onreadystatechange = function() {
         } else {
 
             var nearestArray = aktualno.filter(function(d) { return d.data === aktualno[0].data; });
-			
             var firstNearestDateString = new Date(aktualno[0].data).toJSON().slice(0,10);
-
             var nearestText = "Ближайшие прямые линии пройдут " + firstNearestDateString + ":";
             var nearestHeading = document.createElement("h2");
             var nearestHeadingText = document.createTextNode(nearestText);
