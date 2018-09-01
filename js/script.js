@@ -104,5 +104,5 @@ request.onreadystatechange = function() {
         }
         };
       };
-    request.open("GET", "data/data_2017.json", true);
+    request.open("GET", "data/data_2018.json", true);
     request.send(null);
